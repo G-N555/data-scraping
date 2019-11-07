@@ -14,6 +14,11 @@ BOT_NAME = 'liveInfo'
 SPIDER_MODULES = ['liveInfo.spiders']
 NEWSPIDER_MODULE = 'liveInfo.spiders'
 
+ITEM_PIPELINES = {
+  'liveInfo.pipelines.ValidationPipeline' : 300,
+  'liveInfo.pipelines.MySQLPipeline' : 800,
+}
+
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'liveInfo (+http://www.yourdomain.com)'

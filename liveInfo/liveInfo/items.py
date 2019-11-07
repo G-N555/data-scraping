@@ -10,4 +10,5 @@ import scrapy
 
 class LiveinfoItem(scrapy.Item):
     title = scrapy.Field()
-    body = scrapy.Field()
+    date = scrapy.Field()
+    lineUp = scrapy.Field()

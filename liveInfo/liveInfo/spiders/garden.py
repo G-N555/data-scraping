@@ -3,7 +3,7 @@ from liveInfo.items import LiveinfoItem
 
 class GardenSpider(scrapy.Spider):
     name = 'garden'
-    allowed_domains = ['gar-den.in/']
+    allowed_domains = ['gar-den.in']
     start_urls = ['http://gar-den.in/']
 
     def parse(self, response):
@@ -15,7 +15,12 @@ class GardenSpider(scrapy.Spider):
         liveTitle = LiveinfoItem()
         articles = response.css('section div article')
         for article in articles:
+            item = LiveinfoItem()
             liveTitle = article.css('div header.entry-header h1 a::text').extract_first()
+            item['title'] = liveTitle
             strDate = article.css('div footer time::attr("datetime")').extract_first()[0:10]
-            lineUp = article.css('div.entry_headerpost p::text').extract()
-            print(lineUp)
+            item['date'] = strDate
+            lineUp = article.css("div.entry_headerpost p").xpath('string()').extract()
+            for char in lineUp:
+                item['lineUp'] = "".join(char).replace("\r\n", "").replace("\u3000\xa0", "").replace("\u3000", "")
+            yield item
