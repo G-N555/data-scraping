@@ -23,6 +23,6 @@ class GardenSpider(scrapy.Spider):
             lineUp = table.css("div.entry_headerpost p").xpath('string()').extract()
             for band in lineUp:
                 item['lineUp'] = "".join(band).replace("\r\n", "").replace("\u3000\xa0", "").replace("\u3000", "")
-            liveHouseId = "1"
+            liveHouseId = "2"
             url = ""
             yield item
