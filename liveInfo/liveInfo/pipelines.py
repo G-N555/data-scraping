@@ -36,6 +36,7 @@ class MySQLPipeline(object):
                 title VARCHAR(200) NOT NULL,
                 date VARCHAR(200),
                 lineUp VARCHAR(400),
+                url VARCHAR(400),
                 PRIMARY KEY(id)
             )
         ''')
