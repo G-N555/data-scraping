@@ -12,3 +12,5 @@ class LiveinfoItem(scrapy.Item):
     title = scrapy.Field()
     date = scrapy.Field()
     lineUp = scrapy.Field()
+    liveHouseId = scrapy.Field()
+    url = scrapy.Field()

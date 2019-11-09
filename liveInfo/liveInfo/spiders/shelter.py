@@ -22,4 +22,7 @@ class GardenSpider(scrapy.Spider):
             lineUp = table.css('td p.month_content').xpath('string()').extract()
             for band in lineUp:
                 item['lineUp'] = "".join(band).replace("\n","").replace("\xa0","")
+            item['liveHouseId'] = 1
+            url = "".join(table.css('td div h3 a::attr(href)').extract())
+            item['url'] = url
             yield item

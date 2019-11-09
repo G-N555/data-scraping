@@ -36,6 +36,7 @@ class MySQLPipeline(object):
                 title VARCHAR(200) NOT NULL,
                 date VARCHAR(200),
                 lineUp VARCHAR(400),
+                liveHouseId INTEGER,
                 url VARCHAR(400),
                 PRIMARY KEY(id)
             )
@@ -47,7 +48,7 @@ class MySQLPipeline(object):
 
     def process_item(self, item, spider):
         print("item",item)
-        self.c.execute('INSERT INTO info (title,date,lineUp) VALUES(%(title)s, %(date)s, %(lineUp)s)', dict(item))
+        self.c.execute('INSERT INTO info (title,date,lineUp,liveHouseId,url) VALUES(%(title)s, %(date)s, %(lineUp)s, %(liveHouseId)s, %(url)s)', dict(item))
         self.conn.commit()
         return item
 
